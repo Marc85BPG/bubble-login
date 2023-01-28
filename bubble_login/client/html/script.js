@@ -3,23 +3,22 @@ var nui = angular.module('nui', []);
 
 // Define the `PhoneListController` controller on the `phonecatApp` module
 nui.controller('nuiController', function nuiController( $scope, $document, $window ) {
-	
 	$scope.submitEnter = function(event) {
 		var username = $("#username").val();
 		var password = $("#password").val();
 		
         if( username != '' && password != '' ) {	
-			$.post('http://bubble_login/bubble_login:LoginServer', JSON.stringify({
+			$.post('https://bubble_login/bubble_login:LoginServer', JSON.stringify({
 				username: $("#username").val(),
 				password: $("#password").val()
 			}));
 		} else {
-			$.post('http://bubble_login/bubble_login:LoginErrorServer', JSON.stringify({}));
+			$.post('https://bubble_login/bubble_login:LoginErrorServer', JSON.stringify({}));
 		}
 	}	
 	
 	$scope.submitLeave = function(event) {		
-        $.post('http://bubble_login/bubble_login:LeaveServer', JSON.stringify({}));
+        $.post('https://bubble_login/bubble_login:LeaveServer', JSON.stringify({}));
     }	
 	
     window.addEventListener('message', function(event) {		
@@ -27,12 +26,9 @@ nui.controller('nuiController', function nuiController( $scope, $document, $wind
             document.body.style.display = event.data.StatusJs ? "block" : "none"; // If data 'StatusJs' is enable, change css to 'block'			
         }		
     });
-	
 });
 
-
 /*NOTIFY*/
-
 $(function () {
     var icons = {
         "system" : "fas fa-info-circle",
