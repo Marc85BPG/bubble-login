@@ -52,6 +52,30 @@ end)
 2. You are Done! Lol
 
 ## ESX ##
+1. Go to esx_multicharacter/client/main.lua an change this:
 
-Im Sorry but i didnt test it on ESX but ill will look into it asap!
+	CreateThread(function()
+		while not ESX.PlayerLoaded do
+			Wait(0)
+			if NetworkIsPlayerActive(PlayerId()) then
+				exports.spawnmanager:setAutoSpawn(false)
+				DoScreenFadeOut(0)
+				while not GetResourceState('esx_context') == 'started' do
+					Wait(0)
+				end
+				-- TriggerEvent("esx_multicharacter:SetupCharacters")
+				break
+			end
+		end
+	end)
 
+2. To this:
+
+	CreateThread(function()
+		while not GetResourceState('esx_context') == 'started' do
+			Wait(0)
+			break
+		end
+	end)
+
+3. This should be Done!
