@@ -1,10 +1,10 @@
-fx_version "adamant"
+fx_version 'cerulean'
+game 'gta5'
+lua54 'yes'
 
-game "gta5"
-
+name 'bubble_login'
 author "BubbleDude"
 
-lua54 'yes'
 
 client_scripts {
     'client/client.lua'
@@ -12,7 +12,7 @@ client_scripts {
 
 server_scripts {
     'server/server.lua',
-    '@mysql-async/lib/MySQL.lua'
+	'@oxmysql/lib/MySQL.lua',
 }
 
 ui_page 'client/html/index.html'
